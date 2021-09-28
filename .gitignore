@@ -1,0 +1,61 @@
+*target/
+*.pyc
+*ansible_fact_caching.cache
+*.swp
+.DS_Store
+.vagrant
+
+#added terraform files to gitignore as they will be handeled aseparately
+.terraform
+terraform.tfstate*
+
+
+# Created by https://www.gitignore.io/api/linux,vim
+
+### Linux ###
+*~
+
+# temporary files which can be created if a process still has a handle open of a deleted file
+.fuse_hidden*
+
+# KDE directory preferences
+.directory
+
+# Linux trash folder which might appear on any partition or disk
+.Trash-*
+### ansible
+*.retry
+
+### Vim ###
+# swap
+[._]*.s[a-w][a-z]
+[._]s[a-w][a-z]
+# session
+Session.vim
+# temporary
+.netrwhist
+*~
+# auto-generated tag files
+tags
+# eclipse
+.project
+.pydevproject
+.settings
+# IntelliJ IDEA
+.idea
+*.iml
+# Terraform
+.terraform
+# Python envs
+.envrc
+.python-version
+.travis.yml
+.classpath
+# versions for testing
+versions/
+# Inventory
+inventory/
+# Sicpa Standard roles
+ansible-role-*/ 
+bin/
+ansible_fact_caching_*/
