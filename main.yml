@@ -1,0 +1,16 @@
+---
+- hosts: localhost
+  connection: local
+  gather_facts: true
+
+  vars:
+    image_name: tomcatapp
+    image_tag: latest
+
+    dockerfile_path: tomcatapp
+    container_name: ctomcatapp
+
+  tasks:
+    - import_tasks: setup.yml
+    - import_tasks: docker.yml
+    - import_tasks: test.yml

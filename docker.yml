@@ -1,0 +1,24 @@
+---
+- name: Build Docker image from Dockerfile
+  docker_image:
+    name: "{{ image_name }}"
+    tag: "{{ image_tag }}"
+    source: build
+    build:
+      path: "{{ playbook_dir }}/{{ dockerfile_path }}"
+      pull: false
+    state: present
+
+- name: Run test_sample_app.py::test_container
+  command: "pytest test_sample_app.py::test_container -rA"
+  register: command_output
+  ignore_errors: yes
+
+- name: Run a ctomcatapp container
+  tags: run
+  docker_container:
+    image: "{{ image_name }}:{{ image_tag }}"
+    name: "{{ container_name }}"
+    state: started
+    ports: 8080:8080
+  when: '"FAILED" in command_output.stdout'

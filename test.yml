@@ -1,0 +1,9 @@
+---
+- name: Run all test_sample_app.py
+  shell: "pytest -rA test_sample_app.py | grep --color=never -E \"^PASSED|^FAILED\""
+  register: command_output
+  ignore_errors: yes
+
+- name: RESULTS
+  debug:
+    msg: "{{ command_output.stdout_lines }}"
